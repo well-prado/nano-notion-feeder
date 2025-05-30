@@ -1,0 +1,69 @@
+{
+	"name": "Document to Notion Router",
+	"description": "Main router workflow that analyzes documents and routes to appropriate Notion save workflow",
+	"version": "1.0.0",
+	"trigger": {
+		"http": {
+			"method": "*",
+			"path": "/",
+			"accept": "application/json"
+		}
+	},
+	"steps": [
+		{
+			"name": "analyze-input",
+			"node": "@nanoservice-ts/if-else",
+			"type": "module"
+		}
+	],
+	"nodes": {
+		"analyze-input": {
+			"conditions": [
+				{
+					"type": "if",
+					"condition": "ctx.request.body.content && (ctx.request.body.category || ctx.request.body.content.match(/^Category:\\s*\\S+/mi))",
+					"steps": [
+						{
+							"name": "route-to-direct-save",
+							"node": "workflow-caller",
+							"type": "module"
+						}
+					]
+				},
+				{
+					"type": "else",
+					"steps": [
+						{
+							"name": "route-to-interactive-save",
+							"node": "workflow-caller",
+							"type": "module"
+						}
+					]
+				}
+			]
+		},
+		"route-to-direct-save": {
+			"inputs": {
+				"workflow": "notion-direct-save",
+				"method": "POST",
+				"baseUrl": "http://localhost:4000",
+				"payload": {
+					"content": "${ctx.request.body.content}",
+					"category": "${ctx.request.body.category}",
+					"database": "${ctx.request.body.database}"
+				}
+			}
+		},
+		"route-to-interactive-save": {
+			"inputs": {
+				"workflow": "notion-interactive-save",
+				"method": "POST",
+				"baseUrl": "http://localhost:4000",
+				"payload": {
+					"content": "${ctx.request.body.content}",
+					"database": "${ctx.request.body.database}"
+				}
+			}
+		}
+	}
+} 

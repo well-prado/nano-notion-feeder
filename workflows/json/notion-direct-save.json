@@ -1,0 +1,75 @@
+{
+	"name": "Notion Direct Save",
+	"description": "Directly saves documents to Notion when category is already provided",
+	"version": "1.0.0",
+	"trigger": {
+		"http": {
+			"method": "*",
+			"path": "/",
+			"accept": "application/json"
+		}
+	},
+	"steps": [
+		{
+			"name": "parse-category",
+			"node": "category-parser",
+			"type": "module"
+		},
+		{
+			"name": "generate-title",
+			"node": "title-generator",
+			"type": "module"
+		},
+		{
+			"name": "convert-markdown",
+			"node": "markdown-to-notion-converter",
+			"type": "module"
+		},
+		{
+			"name": "create-notion-page",
+			"node": "notion-page-creator",
+			"type": "module"
+		},
+		{
+			"name": "format-response",
+			"node": "response-formatter",
+			"type": "module"
+		}
+	],
+	"nodes": {
+		"parse-category": {
+			"inputs": {
+				"content": "${ctx.request.body.content}",
+				"category": "${ctx.request.body.category}"
+			}
+		},
+		"generate-title": {
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent}"
+			}
+		},
+		"convert-markdown": {
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent}"
+			}
+		},
+		"create-notion-page": {
+			"inputs": {
+				"database": "${ctx.request.body.database}",
+				"title": "${ctx.vars.title}",
+				"category": "${ctx.vars.category}",
+				"contentBlocks": "js/ctx.vars.notionBlocks"
+			}
+		},
+		"format-response": {
+			"inputs": {
+				"pageId": "${ctx.response.data.id}",
+				"pageUrl": "${ctx.response.data.url}",
+				"title": "${ctx.vars.title}",
+				"category": "${ctx.vars.category}",
+				"success": true,
+				"error": ""
+			}
+		}
+	}
+} 

@@ -1,0 +1,118 @@
+{
+	"name": "Notion Interactive Save",
+	"description": "Saves documents to Notion with interactive category selection via MCP",
+	"version": "1.0.0",
+	"trigger": {
+		"http": {
+			"method": "*",
+			"path": "/",
+			"accept": "application/json"
+		}
+	},
+	"steps": [
+		{
+			"name": "check-if-category-response",
+			"node": "@nanoservice-ts/if-else",
+			"type": "module"
+		}
+	],
+	"nodes": {
+		"check-if-category-response": {
+			"conditions": [
+				{
+					"type": "if",
+					"condition": "ctx.request.body.selectedCategory",
+					"steps": [
+						{
+							"name": "handle-category-selection",
+							"node": "category-selection-handler",
+							"type": "module"
+						},
+						{
+							"name": "generate-title",
+							"node": "title-generator",
+							"type": "module"
+						},
+						{
+							"name": "convert-markdown",
+							"node": "markdown-to-notion-converter",
+							"type": "module"
+						},
+						{
+							"name": "create-notion-page",
+							"node": "notion-page-creator",
+							"type": "module"
+						},
+						{
+							"name": "format-response",
+							"node": "response-formatter",
+							"type": "module"
+						}
+					]
+				},
+				{
+					"type": "else",
+					"steps": [
+						{
+							"name": "fetch-database-schema",
+							"node": "notion-database-schema",
+							"type": "module"
+						},
+						{
+							"name": "compose-user-prompt",
+							"node": "user-prompt-composer",
+							"type": "module"
+						}
+					]
+				}
+			]
+		},
+		"handle-category-selection": {
+			"inputs": {
+				"selectedCategory": "${ctx.request.body.selectedCategory}",
+				"availableCategories": "js/ctx.request.body.availableCategories",
+				"content": "${ctx.request.body.content}"
+			}
+		},
+		"generate-title": {
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent || ctx.request.body.content}"
+			}
+		},
+		"convert-markdown": {
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent || ctx.request.body.content}"
+			}
+		},
+		"create-notion-page": {
+			"inputs": {
+				"database": "${ctx.request.body.database}",
+				"title": "${ctx.vars.title}",
+				"category": "${ctx.vars.category}",
+				"contentBlocks": "js/ctx.vars.notionBlocks"
+			}
+		},
+		"format-response": {
+			"inputs": {
+				"pageId": "${ctx.response.data.id}",
+				"pageUrl": "${ctx.response.data.url}",
+				"title": "${ctx.vars.title}",
+				"category": "${ctx.vars.category}",
+				"success": true,
+				"error": ""
+			}
+		},
+		"fetch-database-schema": {
+			"inputs": {
+				"database": "${ctx.request.body.database}"
+			}
+		},
+		"compose-user-prompt": {
+			"inputs": {
+				"availableCategories": "js/ctx.response.data.categories",
+				"content": "${ctx.request.body.content}",
+				"database": "${ctx.request.body.database}"
+			}
+		}
+	}
+} 
