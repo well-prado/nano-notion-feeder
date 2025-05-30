@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord OAuth Authentication</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #5865F2;
+            margin-top: 0;
+            font-size: 28px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+            color: #2C2F33;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #5865F2;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #4752C4;
+        }
+        .btn-container {
+            text-align: center;
+        }
+        .note {
+            background-color: #F8F9FA;
+            border-left: 4px solid #5865F2;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .permission-list {
+            background-color: #F8F9FA;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .permission-list li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #F1F1F1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        #result-container {
+            display: none;
+            background-color: #F0F8FF;
+            border: 1px solid #B8DAFF;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .success {
+            color: #155724;
+            background-color: #D4EDDA;
+            border-color: #C3E6CB;
+        }
+        .error {
+            color: #721C24;
+            background-color: #F8D7DA;
+            border-color: #F5C6CB;
+        }
+        #direct-auth-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #E9F7FD;
+            border: 1px solid #B0E0F2;
+            border-radius: 4px;
+        }
+        .url-display {
+            word-break: break-all;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discord OAuth Authentication</h1>
+        
+        <div class="note">
+            This tool helps you authenticate your Discord bot and gain access to server analytics.
+        </div>
+        
+        <h2>What this does</h2>
+        <p>
+            When you click the "Authorize with Discord" button below, you'll be redirected to Discord's authorization page where you can:
+        </p>
+        <ol>
+            <li>Select which server to add the bot to</li>
+            <li>Review and approve the requested permissions</li>
+        </ol>
+        
+        <h2>Permissions requested</h2>
+        <div class="permission-list">
+            <ul>
+                <li><strong>View Server Insights</strong> - Allows access to server analytics data</li>
+                <li><strong>Bot presence in server</strong> - Adds the bot to your selected server</li>
+                <li><strong>Basic identity information</strong> - Identifies who authorized the application</li>
+            </ul>
+        </div>
+        
+        <div class="btn-container">
+            <button id="authorize-btn" class="btn">Authorize with Discord</button>
+        </div>
+        
+        <div id="result-container">
+            <h2 id="result-title">Authentication Result</h2>
+            <p id="result-message"></p>
+        </div>
+        
+        <!-- Direct authorization link for fallback -->
+        <div id="direct-auth-container">
+            <h3>Direct Authorization</h3>
+            <p>If the automatic redirect doesn't work, you can use the link below:</p>
+            <div class="url-display" id="auth-url-display"><%- defaultAuthUrl %></div>
+            <div class="btn-container">
+                <a href="<%- defaultAuthUrl %>" id="direct-auth-link" class="btn" target="_blank">Open Authorization Link</a>
+            </div>
+        </div>
+        
+        <h2>After authorization</h2>
+        <p>
+            Once authorized, your bot will be added to the server and the token will be stored temporarily for use with the analytics dashboard.
+            The token expires after a period and will need to be refreshed if you want to continue accessing analytics data.
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authorizeBtn = document.getElementById('authorize-btn');
+            const resultContainer = document.getElementById('result-container');
+            const resultMessage = document.getElementById('result-message');
+            const resultTitle = document.getElementById('result-title');
+            const directAuthContainer = document.getElementById('direct-auth-container');
+            const directAuthLink = document.getElementById('direct-auth-link');
+            const authUrlDisplay = document.getElementById('auth-url-display');
+            
+            // Server-provided default values (from EJS template)
+            const defaultAuthUrl = "<%- defaultAuthUrl %>";
+            const defaultState = "<%- defaultState %>";
+            let currentAuthUrl = defaultAuthUrl;
+            let currentState = defaultState;
+            
+            // Check for authentication response in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const error = urlParams.get('error');
+            const state = urlParams.get('state');
+            
+            // Verify state parameter to prevent CSRF
+            const savedState = localStorage.getItem('discord_oauth_state');
+            const isValidState = state && savedState && state === savedState;
+            
+            if (error) {
+                // Show error message
+                resultContainer.style.display = 'block';
+                resultContainer.className = 'error';
+                resultTitle.textContent = 'Authentication Failed';
+                resultMessage.textContent = `Error: ${error}. Please try again.`;
+                
+                // Show direct auth option as fallback
+                directAuthContainer.style.display = 'block';
+            } else if (code) {
+                // Clear saved state
+                localStorage.removeItem('discord_oauth_state');
+                
+                // Verify state first
+                if (!isValidState) {
+                    resultContainer.style.display = 'block';
+                    resultContainer.className = 'error';
+                    resultTitle.textContent = 'Security Error';
+                    resultMessage.textContent = 'Invalid state parameter. This could be a cross-site request forgery attempt.';
+                    return; // Stop processing
+                }
+                
+                // Show success message
+                resultContainer.style.display = 'block';
+                resultContainer.className = 'success';
+                resultTitle.textContent = 'Authentication Successful!';
+                resultMessage.textContent = 'Your Discord bot has been successfully authorized. You can now use the analytics dashboard.';
+                
+                // Process the OAuth callback
+                const callbackParams = new URLSearchParams();
+                callbackParams.append('code', code);
+                if (state) callbackParams.append('state', state);
+                
+                fetch(`/discord-oauth/callback?${callbackParams.toString()}`)
+                    .then(response => {
+                        console.log('Callback response status:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('OAuth callback response:', data);
+                        if (data.success) {
+                            resultMessage.textContent = 'Authentication successful! Your token has been stored for use with the analytics dashboard.';
+                        } else {
+                            resultContainer.className = 'error';
+                            resultTitle.textContent = 'Token Exchange Failed';
+                            resultMessage.textContent = data.error || 'Failed to exchange code for access token. Please try again.';
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Fetch error:', err);
+                        resultContainer.style.display = 'block';
+                        resultContainer.className = 'error';
+                        resultTitle.textContent = 'Error';
+                        resultMessage.textContent = 'An error occurred while processing the authentication. Please try again.';
+                        
+                        // Show direct auth option as fallback
+                        directAuthContainer.style.display = 'block';
+                    });
+            }
+            
+            // Set up the authorize button
+            authorizeBtn.addEventListener('click', function() {
+                // Generate a random state for CSRF protection
+                const stateValue = Math.random().toString(36).substring(2, 15);
+                console.log('Generated state:', stateValue);
+                
+                // Update the direct auth link with new state
+                const directUrl = new URL(defaultAuthUrl);
+                directUrl.searchParams.set('state', stateValue);
+                currentAuthUrl = directUrl.toString();
+                currentState = stateValue;
+                
+                // Update UI elements
+                directAuthLink.href = currentAuthUrl;
+                authUrlDisplay.innerHTML = currentAuthUrl;
+                
+                // Make a request to generate the authorization URL
+                fetch('/discord-oauth/initiate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        state: stateValue
+                    })
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('OAuth initiation response:', data);
+                    
+                    if (data.authorize_url) {
+                        // Store state in local storage to verify when returning
+                        localStorage.setItem('discord_oauth_state', stateValue);
+                        
+                        // Redirect to Discord authorization page
+                        window.location.href = data.authorize_url;
+                    } else {
+                        // Show error and fallback to direct link
+                        resultContainer.style.display = 'block';
+                        resultContainer.className = 'error';
+                        resultTitle.textContent = 'Error';
+                        resultMessage.textContent = data.error || 'Failed to generate authorization URL from server. Using direct link instead.';
+                        
+                        // Store state for the fallback link
+                        localStorage.setItem('discord_oauth_state', stateValue);
+                        
+                        // Show direct authorization option
+                        directAuthContainer.style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    console.error('Fetch error:', err);
+                    resultContainer.style.display = 'block';
+                    resultContainer.className = 'error';
+                    resultTitle.textContent = 'Error';
+                    resultMessage.textContent = 'An error occurred while initializing authentication. You can use the direct link below.';
+                    
+                    // Store state for the fallback link
+                    localStorage.setItem('discord_oauth_state', stateValue);
+                    
+                    // Show direct authorization option
+                    directAuthContainer.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

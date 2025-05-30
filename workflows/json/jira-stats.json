@@ -1,0 +1,27 @@
+{
+  "name": "jira-stats",
+  "description": "Fetches statistics from Jira including tasks and bugs",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "jira-fetcher",
+      "node": "jira-stats-fetcher",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "jira-fetcher": {
+      "inputs": {
+        "projectKey": "${ctx.request.body.projectKey}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    }
+  }
+} 

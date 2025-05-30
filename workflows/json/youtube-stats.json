@@ -1,0 +1,27 @@
+{
+  "name": "youtube-stats",
+  "description": "Fetches statistics from YouTube for a specific channel",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "youtube-fetcher",
+      "node": "youtube-stats-fetcher",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "youtube-fetcher": {
+      "inputs": {
+        "channelId": "${ctx.request.body.channelId || 'UC_hTgaUhi9CfL6Wusr4Abdg'}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    }
+  }
+} 

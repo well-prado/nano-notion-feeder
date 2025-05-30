@@ -1,0 +1,93 @@
+{
+  "name": "discord-oauth",
+  "description": "Handles Discord OAuth flow for authentication and bot installation",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "*",
+      "path": "/:function?/:id?",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "router",
+      "node": "@nanoservice-ts/if-else",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "router": {
+      "conditions": [
+        {
+          "type": "if",
+          "steps": [
+            {
+              "name": "oauth-ui",
+              "node": "discord-oauth-ui",
+              "type": "module"
+            }
+          ],
+          "condition": "ctx.request.method.toLowerCase() === 'get' && (!ctx.request.params.function || ctx.request.params.function === '')"
+        },
+        {
+          "type": "if",
+          "steps": [
+            {
+              "name": "initiate-oauth",
+              "node": "discord-oauth-manager",
+              "type": "module",
+              "set_var": true
+            }
+          ],
+          "condition": "ctx.request.method.toLowerCase() === 'post' && ctx.request.params.function === 'initiate'"
+        },
+        {
+          "type": "if",
+          "steps": [
+            {
+              "name": "oauth-callback",
+              "node": "discord-oauth-manager",
+              "type": "module",
+              "set_var": true
+            }
+          ],
+          "condition": "ctx.request.method.toLowerCase() === 'get' && ctx.request.params.function === 'callback'"
+        },
+        {
+          "type": "else",
+          "steps": [
+            {
+              "name": "method-not-allowed",
+              "node": "error",
+              "type": "module"
+            }
+          ]
+        }
+      ]
+    },
+    "oauth-ui": {
+      "inputs": {}
+    },
+    "initiate-oauth": {
+      "inputs": {
+        "action": "initiate",
+        "state": "js/ctx.request.body && ctx.request.body.state"
+      }
+    },
+    "oauth-callback": {
+      "inputs": {
+        "action": "exchange",
+        "code": "js/ctx.request.query.code",
+        "state": "js/ctx.request.query.state",
+        "error": "js/ctx.request.query.error",
+        "guildId": "js/ctx.request.query.guild_id"
+      }
+    },
+    "method-not-allowed": {
+      "inputs": {
+        "message": "Method not allowed or invalid action"
+      }
+    }
+  }
+} 

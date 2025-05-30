@@ -1,6 +1,7 @@
 import { DefaultLogger } from "@nanoservice-ts/runner";
 import { type Span, metrics, trace } from "@opentelemetry/api";
 import HttpTrigger from "./runner/HttpTrigger";
+import { initRegistry } from "./initRegistry";
 
 export default class App {
 	private httpTrigger: HttpTrigger = <HttpTrigger>{};
@@ -40,6 +41,14 @@ export default class App {
 		return this.httpTrigger.getApp();
 	}
 }
+
+// Initialize the node registry
+initRegistry().then(() => {
+	console.log("Node registry initialization complete");
+}).catch(error => {
+	console.error("Error initializing node registry:", error);
+});
+
 
 if (process.env.DISABLE_TRIGGER_RUN !== "true") {
 	new App().run();

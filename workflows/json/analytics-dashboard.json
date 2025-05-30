@@ -1,0 +1,118 @@
+{
+  "name": "analytics-dashboard",
+  "description": "Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "discord-fetcher",
+      "node": "discord-stats-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "twitter-fetcher",
+      "node": "twitter-stats-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "youtube-fetcher",
+      "node": "youtube-stats-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "jira-fetcher",
+      "node": "jira-stats-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "vanta-fetcher",
+      "node": "vanta-status-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "calendly-fetcher",
+      "node": "calendly-stats-fetcher",
+      "type": "module"
+    },
+    {
+      "name": "aggregator",
+      "node": "stats-aggregator",
+      "type": "module"
+    },
+    {
+      "name": "looker-output",
+      "node": "looker-studio-output",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "discord-fetcher": {
+      "inputs": {
+        "serverId": "${ctx.request.body.discordServerId || '123456789012345678'}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "twitter-fetcher": {
+      "inputs": {
+        "username": "${ctx.request.body.twitterUsername || 'elonmusk'}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "youtube-fetcher": {
+      "inputs": {
+        "channelId": "${ctx.request.body.youtubeChannelId || 'UC_hTgaUhi9CfL6Wusr4Abdg'}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "jira-fetcher": {
+      "inputs": {
+        "projectKey": "${ctx.request.body.jiraProjectKey || 'PROJ'}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "vanta-fetcher": {
+      "inputs": {
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "calendly-fetcher": {
+      "inputs": {
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "aggregator": {
+      "inputs": {
+        "discord": {
+          "from": "discord-fetcher"
+        },
+        "twitter": {
+          "from": "twitter-fetcher"
+        },
+        "youtube": {
+          "from": "youtube-fetcher"
+        },
+        "jira": {
+          "from": "jira-fetcher"
+        },
+        "vanta": {
+          "from": "vanta-fetcher"
+        },
+        "calendly": {
+          "from": "calendly-fetcher"
+        },
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    },
+    "looker-output": {
+      "inputs": {
+        "from": "aggregator"
+      }
+    }
+  }
+} 

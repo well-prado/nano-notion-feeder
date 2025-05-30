@@ -19,6 +19,7 @@ import ErrorNode from "./workflow-docs/ErrorNode";
 import FileManager from "./workflow-docs/FileManager";
 import OpenAI from "./workflow-docs/OpenAI";
 import WorkflowUI from "./workflow-docs/ui";
+import StatelessMCPNode from "./mcp-server";
 
 const ExampleNodes = {
 	"directory-manager": new DirectoryManager(),
@@ -42,6 +43,7 @@ const ExampleNodes = {
 	"base64-pdf": new Base64ToPDF(),
 	"save-image": new SaveImageBase64(),
 	"image-capture-ui": new ImageCaptureUI(),
+	"mcp-server": new StatelessMCPNode(),
 };
 
 export default ExampleNodes;

@@ -1,0 +1,27 @@
+{
+  "name": "twitter-stats",
+  "description": "Fetches statistics from X (Twitter) for a given account",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "twitter-fetcher",
+      "node": "twitter-stats-fetcher",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "twitter-fetcher": {
+      "inputs": {
+        "username": "${ctx.request.body.username}",
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    }
+  }
+} 

@@ -1,0 +1,26 @@
+{
+  "name": "calendly-stats",
+  "description": "Fetches meeting statistics from Calendly",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "calendly-fetcher",
+      "node": "calendly-stats-fetcher",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "calendly-fetcher": {
+      "inputs": {
+        "dateRange": "js/ctx.request.body.dateRange"
+      }
+    }
+  }
+} 
