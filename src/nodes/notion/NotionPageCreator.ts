@@ -25,6 +25,31 @@ export default class NotionPageCreator extends NanoService<NotionPageCreatorInpu
   async handle(ctx: Context, inputs: NotionPageCreatorInput): Promise<INanoServiceResponse> {
     const response = new NanoServiceResponse();
     
+    // Handle potential JSON encoding issues for database parameter
+    let database = inputs.database as string;
+    if (typeof database === 'string') {
+      // Remove surrounding quotes if present
+      database = database.replace(/^["']|["']$/g, '');
+      // Handle escaped quotes
+      database = database.replace(/\\"/g, '"');
+      // Trim whitespace
+      database = database.trim();
+    }
+    
+    // Validate database parameter
+    if (!database || database === 'undefined' || database === '') {
+      throw new GlobalError('Database ID is required and must be a valid UUID');
+    }
+
+    // Validate other required inputs
+    if (!inputs.title || inputs.title.trim() === '') {
+      throw new GlobalError('Title is required');
+    }
+
+    if (!inputs.category || inputs.category.trim() === '') {
+      throw new GlobalError('Category is required');
+    }
+    
     try {
       // Validate required credentials
       validateCredentials({
@@ -35,11 +60,8 @@ export default class NotionPageCreator extends NanoService<NotionPageCreatorInpu
       const notionToken = process.env.NOTION_TOKEN;
       const apiVersion = process.env.NOTION_API_VERSION || "2022-06-28";
       
-      // Determine target database
-      const databaseId = inputs.database || process.env.NOTION_DEFAULT_DATABASE_ID;
-      if (!databaseId) {
-        throw new Error("No database specified and NOTION_DEFAULT_DATABASE_ID not set");
-      }
+      // Use the validated database ID
+      const databaseId = database;
       
       // Prepare Notion API request
       const notionUrl = "https://api.notion.com/v1/pages";

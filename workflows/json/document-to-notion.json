@@ -2,9 +2,28 @@
 	"name": "Document to Notion Router",
 	"description": "Main router workflow that analyzes documents and routes to appropriate Notion save workflow",
 	"version": "1.0.0",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"content": {
+				"type": "string",
+				"description": "The document content in Markdown format to save to Notion"
+			},
+			"database": {
+				"type": "string",
+				"description": "Notion database ID (32-character UUID) where the document should be saved"
+			},
+			"category": {
+				"type": "string",
+				"description": "Optional category for the document. If not provided, user will be prompted to select one.",
+				"optional": true
+			}
+		},
+		"required": ["content", "database"]
+	},
 	"trigger": {
 		"http": {
-			"method": "*",
+			"method": "POST",
 			"path": "/",
 			"accept": "application/json"
 		}

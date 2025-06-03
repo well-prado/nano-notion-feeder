@@ -250,7 +250,23 @@ export class NodeToMCPAdapter {
   /**
    * Extract schema from a workflow
    */
-  private static extractSchemaFromWorkflow(workflow: any): Record<string, any> {
+  static extractSchemaFromWorkflow(workflow: any): Record<string, any> {
+    // If workflow has an inputSchema field, use it
+    if (workflow.inputSchema && workflow.inputSchema.properties) {
+      const schema: Record<string, any> = {};
+      
+      // Convert workflow inputSchema to MCP schema format
+      Object.entries(workflow.inputSchema.properties).forEach(([propName, propSchema]: [string, any]) => {
+        schema[propName] = {
+          type: { type: propSchema.type || "string" },
+          description: propSchema.description || `Parameter: ${propName}`
+        };
+      });
+      
+      return schema;
+    }
+    
+    // Fallback to original schema extraction logic
     const schema: Record<string, any> = {};
     
     // If workflow has HTTP trigger with path parameters, extract them
@@ -265,7 +281,7 @@ export class NodeToMCPAdapter {
       });
     }
     
-    // For now, add a generic 'data' parameter for request body
+    // For workflows without inputSchema, add a generic 'data' parameter for request body
     schema.data = {
       type: { type: "object" },
       description: "Data to send to the workflow"

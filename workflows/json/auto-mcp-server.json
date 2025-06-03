@@ -20,7 +20,7 @@
       "mcp-endpoint": {
         "inputs": {
           "debug_mode": true,
-          "discover_nodes": false,
+          "discover_nodes": true,
           "discover_workflows": true,
           "workflows_directory": "/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows",
           "excluded_workflows": ["auto-mcp-server", "chatgpt-interface", "chatgpt-ui", "mcp-client", "list_available_tools", "empty", "email-signature-generator", "chain-tools", "feedback"],

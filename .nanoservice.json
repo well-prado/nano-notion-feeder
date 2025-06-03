@@ -1,0 +1,121 @@
+{
+  "name": "nano-notion-feeder",
+  "builds": [
+    {
+      "id": "b13e2f85-21e6-46eb-900f-2758607a8877",
+      "tarball": "1df38c1b-d7c2-4d27-8812-9e36549c20da.tar.gz",
+      "key": "66140535-165a-4ca6-8a81-5206eff81a67/serverless-deployment/b13e2f85-21e6-46eb-900f-2758607a8877",
+      "creationTimestamp": "2025-05-30T02:01:16Z",
+      "startTime": "2025-05-30T02:01:16Z",
+      "completionTime": "2025-05-30T02:03:29Z",
+      "reason": "Succeeded",
+      "status": "True",
+      "statusMessage": "All Steps have completed executing",
+      "updatedAt": "2025-05-30T02:03:31.112Z"
+    },
+    {
+      "id": "8f10cb0c-6627-4df0-b61e-92f8b9351ea0",
+      "tarball": "251d92b7-2dea-4aac-a644-0545c385c426.tar.gz",
+      "key": "66140535-165a-4ca6-8a81-5206eff81a67/serverless-deployment/8f10cb0c-6627-4df0-b61e-92f8b9351ea0",
+      "creationTimestamp": "2025-05-30T02:04:08Z",
+      "startTime": "2025-05-30T02:04:08Z",
+      "completionTime": "2025-05-30T02:06:13Z",
+      "reason": "Succeeded",
+      "status": "True",
+      "statusMessage": "All Steps have completed executing",
+      "updatedAt": "2025-05-30T02:06:14.923Z"
+    }
+  ],
+  "lastBuild": {
+    "id": "8f10cb0c-6627-4df0-b61e-92f8b9351ea0",
+    "tarball": "251d92b7-2dea-4aac-a644-0545c385c426.tar.gz",
+    "key": "66140535-165a-4ca6-8a81-5206eff81a67/serverless-deployment/8f10cb0c-6627-4df0-b61e-92f8b9351ea0",
+    "creationTimestamp": "2025-05-30T02:04:08Z",
+    "startTime": "2025-05-30T02:04:08Z",
+    "completionTime": "2025-05-30T02:06:13Z",
+    "reason": "Succeeded",
+    "status": "True",
+    "statusMessage": "All Steps have completed executing",
+    "updatedAt": "2025-05-30T02:06:14.923Z"
+  },
+  "deployments": [
+    {
+      "message": "Successfully deployed the service",
+      "data": {
+        "serviceName": "nano-notion-feeder",
+        "namespace": "61k34bya718levzl8mivrue7b",
+        "url": "https://nano-notion-feeder-61k34bya718levzl8mivrue7b.edge.us-east-1.deskree.com",
+        "prometheusUrl": "https://prometheus-61k34bya718levzl8mivrue7b.edge.us-east-1.deskree.com",
+        "creationTimestamp": "2025-05-30T02:06:15Z",
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2025-05-30T02:06:21Z",
+              "status": "True",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2025-05-30T02:06:21Z",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2025-05-30T02:06:21Z",
+              "status": "True",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "nano-notion-feeder-00001",
+          "latestReadyRevisionName": "nano-notion-feeder-00001",
+          "observedGeneration": 1,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100,
+              "revisionName": "nano-notion-feeder-00001"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "lastDeployment": {
+    "message": "Successfully deployed the service",
+    "data": {
+      "serviceName": "nano-notion-feeder",
+      "namespace": "61k34bya718levzl8mivrue7b",
+      "url": "https://nano-notion-feeder-61k34bya718levzl8mivrue7b.edge.us-east-1.deskree.com",
+      "prometheusUrl": "https://prometheus-61k34bya718levzl8mivrue7b.edge.us-east-1.deskree.com",
+      "creationTimestamp": "2025-05-30T02:06:15Z",
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2025-05-30T02:06:21Z",
+            "status": "True",
+            "type": "ConfigurationsReady"
+          },
+          {
+            "lastTransitionTime": "2025-05-30T02:06:21Z",
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastTransitionTime": "2025-05-30T02:06:21Z",
+            "status": "True",
+            "type": "RoutesReady"
+          }
+        ],
+        "latestCreatedRevisionName": "nano-notion-feeder-00001",
+        "latestReadyRevisionName": "nano-notion-feeder-00001",
+        "observedGeneration": 1,
+        "traffic": [
+          {
+            "latestRevision": true,
+            "percent": 100,
+            "revisionName": "nano-notion-feeder-00001"
+          }
+        ]
+      }
+    }
+  }
+}

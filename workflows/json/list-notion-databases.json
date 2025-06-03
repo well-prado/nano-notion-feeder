@@ -1,0 +1,30 @@
+{
+	"name": "List Notion Databases",
+	"description": "Lists all Notion databases that the user has access to",
+	"version": "1.0.0",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"searchQuery": {
+				"type": "string",
+				"description": "Optional search query to filter databases by name",
+				"optional": true
+			}
+		},
+		"required": []
+	},
+	"trigger": {
+		"type": "http",
+		"method": "GET"
+	},
+	"sequence": [
+		{
+			"id": "discover-databases",
+			"node": "database-discovery",
+			"inputs": {
+				"searchQuery": "${ctx.request.query.searchQuery || ctx.request.body.searchQuery || ''}",
+				"listAll": "${!(ctx.request.query.searchQuery || ctx.request.body.searchQuery)}"
+			}
+		}
+	]
+} 

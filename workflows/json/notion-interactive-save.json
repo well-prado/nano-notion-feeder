@@ -2,9 +2,41 @@
 	"name": "Notion Interactive Save",
 	"description": "Saves documents to Notion with interactive category selection via MCP",
 	"version": "1.0.0",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"content": {
+				"type": "string",
+				"description": "The document content in Markdown format to save to Notion"
+			},
+			"database": {
+				"type": "string",
+				"description": "Notion database ID (32-character UUID) where the document should be saved"
+			},
+			"selectedCategory": {
+				"type": "string",
+				"description": "Selected category name (used when responding to category selection prompt)",
+				"optional": true
+			},
+			"availableCategories": {
+				"type": "array",
+				"description": "Available categories from database (used when responding to category selection prompt)",
+				"optional": true,
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"required": ["content", "database"]
+	},
 	"trigger": {
 		"http": {
-			"method": "*",
+			"method": "POST",
 			"path": "/",
 			"accept": "application/json"
 		}

@@ -140,11 +140,47 @@ export default class MarkdownToNotionConverter extends NanoService<MarkdownToNot
         code: {
           caption: [],
           rich_text: [{ text: { content: codeContent } }],
-          language: language.toLowerCase()
+          language: this.mapLanguageToNotion(language)
         }
       },
       nextIndex: i + 1
     };
+  }
+  
+  /**
+   * Maps common language aliases to Notion's expected language codes
+   */
+  private mapLanguageToNotion(language: string): string {
+    const normalizedLang = language.toLowerCase().trim();
+    
+    // Common language mappings for Notion
+    const languageMap: Record<string, string> = {
+      'csharp': 'c#',
+      'cs': 'c#',
+      'c-sharp': 'c#',
+      'cplusplus': 'c++',
+      'cpp': 'c++',
+      'c-plus-plus': 'c++',
+      'fsharp': 'f#',
+      'fs': 'f#',
+      'f-sharp': 'f#',
+      'js': 'javascript',
+      'ts': 'typescript',
+      'py': 'python',
+      'rb': 'ruby',
+      'sh': 'shell',
+      'bash': 'shell',
+      'zsh': 'shell',
+      'powershell': 'powershell',
+      'ps1': 'powershell',
+      'dockerfile': 'docker',
+      'yml': 'yaml',
+      'text': 'plain text',
+      'txt': 'plain text',
+      '': 'plain text'
+    };
+    
+    return languageMap[normalizedLang] || normalizedLang;
   }
   
   private parseBlockquote(lines: string[], startIndex: number): { block: NotionBlock; nextIndex: number } {

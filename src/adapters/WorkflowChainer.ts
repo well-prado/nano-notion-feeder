@@ -2,6 +2,7 @@ import { NanoServiceResponse } from "@nanoservice-ts/runner";
 import path from "node:path";
 import { MCPTool } from "./NodeToMCPAdapter";
 import fs from "fs";
+import { NodeToMCPAdapter } from "./NodeToMCPAdapter";
 
 /**
  * Custom context interface compatible with the nanoservice context structure
@@ -174,17 +175,15 @@ export class WorkflowChainer {
           const workflowPath = `/${workflowName}`;
           const httpMethod = workflow.trigger.http.method || 'POST';
           
+          // Use the enhanced schema extraction from NodeToMCPAdapter
+          const schema = NodeToMCPAdapter.extractSchemaFromWorkflow(workflow);
+          
           // Create a tool that uses the workflow
           const tool: MCPTool = {
             name: this.sanitizeToolName(workflowName),
             description: workflow.description || `Workflow: ${workflowName}`,
             httpMethod: httpMethod === '*' ? 'GET' : httpMethod.toUpperCase(), // Default to GET for wildcard
-            schema: {
-              data: {
-                type: { type: "object" },
-                description: "Data to send to the workflow"
-              }
-            },
+            schema: schema,
             implementation: `
               try {
                 const axios = require('axios');

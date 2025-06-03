@@ -1,6 +1,5 @@
 import { type Context, GlobalError } from "@nanoservice-ts/shared";
 import { NanoService, type INanoServiceResponse, NanoServiceResponse, type JsonLikeObject } from "@nanoservice-ts/runner";
-import { validateCredentials } from "../../utils/credentials";
 
 export interface NotionDatabaseSchemaInput extends JsonLikeObject {
   database: string;
@@ -21,35 +20,45 @@ export default class NotionDatabaseSchema extends NanoService<NotionDatabaseSche
   async handle(ctx: Context, inputs: NotionDatabaseSchemaInput): Promise<INanoServiceResponse> {
     const response = new NanoServiceResponse();
     
+    let database = inputs.database as string;
+    
+    // Handle potential JSON encoding issues - more robust cleaning
+    if (typeof database === 'string') {
+      // Remove surrounding quotes if present
+      database = database.replace(/^["']|["']$/g, '');
+      // Handle escaped quotes
+      database = database.replace(/\\"/g, '"');
+      // Trim whitespace
+      database = database.trim();
+    }
+    
+    // Validate database parameter
+    if (!database || database === 'undefined' || database === '') {
+      throw new GlobalError('Database ID is required and must be a valid UUID');
+    }
+
+    // Get Notion token from environment
+    const notionToken = process.env.NOTION_TOKEN;
+    if (!notionToken) {
+      throw new GlobalError('Notion integration token is not configured');
+    }
+
     try {
-      // Validate required credentials
-      validateCredentials({
-        required: ['NOTION_TOKEN'],
-        optional: ['NOTION_DEFAULT_DATABASE_ID', 'NOTION_API_VERSION']
-      });
-      
-      const notionToken = process.env.NOTION_TOKEN;
-      const apiVersion = process.env.NOTION_API_VERSION || "2022-06-28";
-      
-      // Determine target database
-      const databaseId = inputs.database || process.env.NOTION_DEFAULT_DATABASE_ID;
-      if (!databaseId) {
-        throw new Error("No database specified and NOTION_DEFAULT_DATABASE_ID not set");
-      }
-      
       // Fetch database schema from Notion API
-      const notionUrl = `https://api.notion.com/v1/databases/${databaseId}`;
+      const notionUrl = `https://api.notion.com/v1/databases/${database}`;
+      console.log('Notion API URL:', notionUrl);
       const notionResponse = await fetch(notionUrl, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${notionToken}`,
-          'Notion-Version': apiVersion
+          'Notion-Version': '2022-06-28',
+          'Content-Type': 'application/json'
         }
       });
       
       if (!notionResponse.ok) {
         const errorData = await notionResponse.text();
-        throw new Error(`Notion API error (${notionResponse.status}): ${errorData}`);
+        throw new GlobalError(`Notion API error (${notionResponse.status}): ${errorData}`);
       }
       
       const databaseData = await notionResponse.json() as JsonLikeObject;
@@ -62,7 +71,7 @@ export default class NotionDatabaseSchema extends NanoService<NotionDatabaseSche
       ctx.response = {
         data: {
           categories: categories,
-          databaseId: databaseId,
+          databaseId: database,
           databaseTitle: databaseTitle
         },
         contentType: 'application/json',
@@ -71,7 +80,7 @@ export default class NotionDatabaseSchema extends NanoService<NotionDatabaseSche
       
       const output: NotionDatabaseSchemaOutput = {
         categories: categories,
-        databaseId: databaseId,
+        databaseId: database,
         databaseTitle: databaseTitle,
         categoryProperty: "Category"
       };

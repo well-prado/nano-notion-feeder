@@ -1,0 +1,134 @@
+{
+	"name": "Enhanced Document to Notion Knowledge Base",
+	"description": "Comprehensive document-to-notion workflow with database discovery and enhanced metadata fields",
+	"version": "1.0.0",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"content": {
+				"type": "string",
+				"description": "The document content in Markdown format to save to Notion"
+			},
+			"databaseName": {
+				"type": "string",
+				"description": "Name of the Notion database to search for (optional if databaseId is provided)",
+				"optional": true
+			},
+			"databaseId": {
+				"type": "string",
+				"description": "Notion database ID (32-character UUID) where the document should be saved (optional if databaseName is provided)",
+				"optional": true
+			},
+			"category": {
+				"type": "string",
+				"description": "Category for the document (optional, will prompt if not provided)",
+				"optional": true
+			},
+			"description": {
+				"type": "string",
+				"description": "Description or summary of the document",
+				"optional": true
+			},
+			"status": {
+				"type": "string",
+				"description": "Status of the document (e.g., Draft, Review, Published)",
+				"optional": true
+			},
+			"tags": {
+				"type": "string",
+				"description": "Comma-separated list of tags for the document",
+				"optional": true
+			},
+			"author": {
+				"type": "string",
+				"description": "Author of the document",
+				"optional": true
+			},
+			"sourceUrl": {
+				"type": "string",
+				"description": "Source URL where the document originated",
+				"optional": true
+			},
+			"important": {
+				"type": "boolean",
+				"description": "Whether this document is marked as important",
+				"optional": true
+			}
+		},
+		"required": ["content"]
+	},
+	"trigger": {
+		"type": "http",
+		"method": "POST"
+	},
+	"sequence": [
+		{
+			"id": "discover-database",
+			"node": "database-discovery",
+			"inputs": {
+				"searchQuery": "${ctx.request.body.databaseName || ''}",
+				"listAll": "${ctx.request.body.databaseName ? false : true}"
+			},
+			"condition": "${!ctx.request.body.databaseId}"
+		},
+		{
+			"id": "resolve-database-id",
+			"node": "javascript",
+			"inputs": {
+				"code": "if (ctx.request.body.databaseId) { return { databaseId: ctx.request.body.databaseId }; } else if (ctx.vars.availableDatabases && ctx.vars.availableDatabases.length > 0) { if (ctx.request.body.databaseName) { const matchedDb = ctx.vars.availableDatabases.find(db => db.title.toLowerCase().includes(ctx.request.body.databaseName.toLowerCase())); return { databaseId: matchedDb ? matchedDb.id : ctx.vars.availableDatabases[0].id }; } else { return { databaseId: ctx.vars.availableDatabases[0].id }; } } else { throw new Error('No database found or provided'); }"
+			}
+		},
+		{
+			"id": "parse-category",
+			"node": "category-parser",
+			"inputs": {
+				"content": "${ctx.request.body.content}",
+				"category": "${ctx.request.body.category || ''}"
+			}
+		},
+		{
+			"id": "generate-title",
+			"node": "title-generator",
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent}"
+			}
+		},
+		{
+			"id": "convert-markdown",
+			"node": "markdown-to-notion-converter",
+			"inputs": {
+				"content": "${ctx.vars.cleanedContent}"
+			}
+		},
+		{
+			"id": "create-enhanced-page",
+			"node": "enhanced-notion-page-creator",
+			"inputs": {
+				"database": "${ctx.vars.databaseId}",
+				"title": "${ctx.vars.title}",
+				"content": "${ctx.vars.cleanedContent}",
+				"category": "${ctx.vars.category}",
+				"description": "${ctx.request.body.description || 'Auto-generated from document content'}",
+				"status": "${ctx.request.body.status || 'Draft'}",
+				"tags": "${ctx.request.body.tags || ''}",
+				"author": "${ctx.request.body.author || 'Claude AI'}",
+				"sourceUrl": "${ctx.request.body.sourceUrl || ''}",
+				"important": "${ctx.request.body.important || false}",
+				"relatedItems": "",
+				"contentBlocks": "js/ctx.vars.notionBlocks"
+			}
+		},
+		{
+			"id": "format-response",
+			"node": "response-formatter",
+			"inputs": {
+				"pageId": "${ctx.response.data.pageId}",
+				"pageUrl": "${ctx.response.data.pageUrl}",
+				"title": "${ctx.vars.title}",
+				"category": "${ctx.vars.category}",
+				"success": "${ctx.response.data.success}",
+				"error": "${ctx.response.data.error || ''}"
+			}
+		}
+	]
+} 

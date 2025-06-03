@@ -7,6 +7,8 @@ import ResponseFormatter from "./ResponseFormatter";
 import NotionDatabaseSchema from "./NotionDatabaseSchema";
 import UserPromptComposer from "./UserPromptComposer";
 import CategorySelectionHandler from "./CategorySelectionHandler";
+import DatabaseDiscovery from "./DatabaseDiscovery";
+import EnhancedNotionPageCreator from "./EnhancedNotionPageCreator";
 
 const NotionNodes = {
   "workflow-caller": new WorkflowCaller(),
@@ -18,6 +20,8 @@ const NotionNodes = {
   "notion-database-schema": new NotionDatabaseSchema(),
   "user-prompt-composer": new UserPromptComposer(),
   "category-selection-handler": new CategorySelectionHandler(),
+  "database-discovery": new DatabaseDiscovery(),
+  "enhanced-notion-page-creator": new EnhancedNotionPageCreator(),
 };
 
 export default NotionNodes; 

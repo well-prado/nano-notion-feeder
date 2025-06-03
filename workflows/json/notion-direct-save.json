@@ -2,9 +2,27 @@
 	"name": "Notion Direct Save",
 	"description": "Directly saves documents to Notion when category is already provided",
 	"version": "1.0.0",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"content": {
+				"type": "string",
+				"description": "The document content in Markdown format to save to Notion"
+			},
+			"database": {
+				"type": "string",
+				"description": "Notion database ID (32-character UUID) where the document should be saved"
+			},
+			"category": {
+				"type": "string",
+				"description": "Category name for the document (must match an existing category in the database)"
+			}
+		},
+		"required": ["content", "database", "category"]
+	},
 	"trigger": {
 		"http": {
-			"method": "*",
+			"method": "POST",
 			"path": "/",
 			"accept": "application/json"
 		}

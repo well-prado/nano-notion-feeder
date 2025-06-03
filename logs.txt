@@ -1,0 +1,652 @@
+Initializing global node registry...
+{"level":"info","app":"nanoservice-http","env":"local","message":"Server is running at http://localhost:4000"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Metrics endpoint: http://localhost:4000/metrics"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Server initialized in 1.53ms"}
+Node registry initialized with 25 nodes
+Node registry initialization complete
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 6.03ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 214.79MB, min: 214.40MB, max: 215.19MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 15.65ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"5629b730-c3f8-4761-8e15-85bf9c4a7046"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 3.19ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 215.25MB, min: 215.04MB, max: 215.46MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 3.85ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"6c239423-e22f-4664-9ac0-ea947d76226f"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 1.27ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 215.42MB, min: 215.21MB, max: 215.63MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 1.86ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"79ba8563-351d-4f2d-917e-99c24e6d9227"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 3.39ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 215.24MB, min: 215.03MB, max: 215.45MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 5.13ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"e7aa6da1-1528-406b-ba11-31428bd583fc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 3.84ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 215.38MB, min: 215.16MB, max: 215.61MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 5.49ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"f264acec-9b3d-4875-9d7e-3f38f8494805"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: POST","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: analyze-input [{}]","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: analyze-input in 1.22ms","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (analyze-input)","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: route-to-direct-save [{\"inputs\":{\"workflow\":\"notion-direct-save\",\"method\":\"POST\",\"baseUrl\":\"http://localhost:4000\",\"payload\":{\"content\":\"${ctx.request.body.content}\",\"category\":\"${ctx.request.body.category}\",\"database\":\"${ctx.request.body.database}\"}}}]","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: POST","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 5 steps (Parent)","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: parse-category [{\"inputs\":{\"content\":\"${ctx.request.body.content}\",\"category\":\"${ctx.request.body.category}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: parse-category in 0.82ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: generate-title [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: generate-title in 0.19ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: convert-markdown [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: convert-markdown in 0.79ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: create-notion-page [{\"inputs\":{\"database\":\"${ctx.request.body.database}\",\"title\":\"${ctx.vars.title}\",\"category\":\"${ctx.vars.category}\",\"contentBlocks\":\"js/ctx.vars.notionBlocks\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 3.34ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 218.49MB, min: 218.29MB, max: 218.70MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 4.29ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"08f9a092-ff64-4d23-bb48-1e0c4578b9f7"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 1.71ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 218.77MB, min: 218.58MB, max: 218.95MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 2.39ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"41d8c08b-4b61-4af2-b496-bb0474b9ae79"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: create-notion-page in 536.43ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"4db4afb1-ad74-49a9-b715-31741a3cf11d"}
+{"level":"error","app":"nanoservice-http","env":"local","message":"NotionPageCreator failed: Notion API error (400): {\"object\":\"error\",\"status\":400,\"code\":\"validation_error\",\"message\":\"body failed validation. Fix one:\\nbody.parent.page_id should be defined, instead was `undefined`.\\nbody.parent.database_id should be a valid uuid, instead was `\\\"your-notion-database-id\\\"`.\",\"request_id\":\"526ba4dd-0364-4e1c-b95a-8da62ecad392\"}","stack":"Error: NotionPageCreator failed: Notion API error (400): {\"object\":\"error\",\"status\":400,\"code\":\"validation_error\",\"message\":\"body failed validation. Fix one:\\nbody.parent.page_id should be defined, instead was `undefined`.\\nbody.parent.database_id should be a valid uuid, instead was `\\\"your-notion-database-id\\\"`.\",\"request_id\":\"526ba4dd-0364-4e1c-b95a-8da62ecad392\"}     at NotionPageCreator.handle (/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/src/nodes/notion/NotionPageCreator.ts:136:25)     at processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: route-to-direct-save in 564.45ms","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"998952bb-5406-4946-a388-d6e5f7edd11e"}
+{"level":"error","app":"nanoservice-http","env":"local","message":"Workflow notion-direct-save failed with status 500","stack":"Error: Workflow notion-direct-save failed with status 500     at WorkflowCaller.handle (/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/src/nodes/notion/WorkflowCaller.ts:68:23)     at processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: POST","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: analyze-input [{}]","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: analyze-input in 0.53ms","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (analyze-input)","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: route-to-direct-save [{\"inputs\":{\"workflow\":\"notion-direct-save\",\"method\":\"POST\",\"baseUrl\":\"http://localhost:4000\",\"payload\":{\"content\":\"${ctx.request.body.content}\",\"category\":\"${ctx.request.body.category}\",\"database\":\"${ctx.request.body.database}\"}}}]","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: POST","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 5 steps (Parent)","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: parse-category [{\"inputs\":{\"content\":\"${ctx.request.body.content}\",\"category\":\"${ctx.request.body.category}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: parse-category in 0.52ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: generate-title [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: generate-title in 0.68ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: convert-markdown [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: convert-markdown in 0.88ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: create-notion-page [{\"inputs\":{\"database\":\"${ctx.request.body.database}\",\"title\":\"${ctx.vars.title}\",\"category\":\"${ctx.vars.category}\",\"contentBlocks\":\"js/ctx.vars.notionBlocks\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: create-notion-page in 945.90ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5484fe77-851d-4dd6-84fe-673e52b350bc"}
+{"level":"error","app":"nanoservice-http","env":"local","message":"NotionPageCreator failed: Notion API error (400): {\"object\":\"error\",\"status\":400,\"code\":\"validation_error\",\"message\":\"body failed validation: body.children[144].code.language should be `\\\"abap\\\"`, `\\\"agda\\\"`, `\\\"arduino\\\"`, `\\\"ascii art\\\"`, `\\\"assembly\\\"`, `\\\"bash\\\"`, `\\\"basic\\\"`, `\\\"bnf\\\"`, `\\\"c\\\"`, `\\\"c#\\\"`, `\\\"c++\\\"`, `\\\"clojure\\\"`, `\\\"coffeescript\\\"`, `\\\"coq\\\"`, `\\\"css\\\"`, `\\\"dart\\\"`, `\\\"dhall\\\"`, `\\\"diff\\\"`, `\\\"docker\\\"`, `\\\"ebnf\\\"`, `\\\"elixir\\\"`, `\\\"elm\\\"`, `\\\"erlang\\\"`, `\\\"f#\\\"`, `\\\"flow\\\"`, `\\\"fortran\\\"`, `\\\"gherkin\\\"`, `\\\"glsl\\\"`, `\\\"go\\\"`, `\\\"graphql\\\"`, `\\\"groovy\\\"`, `\\\"haskell\\\"`, `\\\"hcl\\\"`, `\\\"html\\\"`, `\\\"idris\\\"`, `\\\"java\\\"`, `\\\"javascript\\\"`, `\\\"json\\\"`, `\\\"julia\\\"`, `\\\"kotlin\\\"`, `\\\"latex\\\"`, `\\\"less\\\"`, `\\\"lisp\\\"`, `\\\"livescript\\\"`, `\\\"llvm ir\\\"`, `\\\"lua\\\"`, `\\\"makefile\\\"`, `\\\"markdown\\\"`, `\\\"markup\\\"`, `\\\"matlab\\\"`, `\\\"mathematica\\\"`, `\\\"mermaid\\\"`, `\\\"nix\\\"`, `\\\"notion formula\\\"`, `\\\"objective-c\\\"`, `\\\"ocaml\\\"`, `\\\"pascal\\\"`, `\\\"perl\\\"`, `\\\"php\\\"`, `\\\"plain text\\\"`, `\\\"powershell\\\"`, `\\\"prolog\\\"`, `\\\"protobuf\\\"`, `\\\"purescript\\\"`, `\\\"python\\\"`, `\\\"r\\\"`, `\\\"racket\\\"`, `\\\"reason\\\"`, `\\\"ruby\\\"`, `\\\"rust\\\"`, `\\\"sass\\\"`, `\\\"scala\\\"`, `\\\"scheme\\\"`, `\\\"scss\\\"`, `\\\"shell\\\"`, `\\\"smalltalk\\\"`, `\\\"solidity\\\"`, `\\\"sql\\\"`, `\\\"swift\\\"`, `\\\"toml\\\"`, `\\\"typescript\\\"`, `\\\"vb.net\\\"`, `\\\"verilog\\\"`, `\\\"vhdl\\\"`, `\\\"visual basic\\\"`, `\\\"webassembly\\\"`, `\\\"xml\\\"`, `\\\"yaml\\\"`, `\\\"java/c/c++/c#\\\"`, or `\\\"notionscript\\\"`, instead was `\\\"csharp\\\"`.\",\"request_id\":\"0b1287e6-a78d-4be6-9a33-698d84df3f39\"}","stack":"Error: NotionPageCreator failed: Notion API error (400): {\"object\":\"error\",\"status\":400,\"code\":\"validation_error\",\"message\":\"body failed validation: body.children[144].code.language should be `\\\"abap\\\"`, `\\\"agda\\\"`, `\\\"arduino\\\"`, `\\\"ascii art\\\"`, `\\\"assembly\\\"`, `\\\"bash\\\"`, `\\\"basic\\\"`, `\\\"bnf\\\"`, `\\\"c\\\"`, `\\\"c#\\\"`, `\\\"c++\\\"`, `\\\"clojure\\\"`, `\\\"coffeescript\\\"`, `\\\"coq\\\"`, `\\\"css\\\"`, `\\\"dart\\\"`, `\\\"dhall\\\"`, `\\\"diff\\\"`, `\\\"docker\\\"`, `\\\"ebnf\\\"`, `\\\"elixir\\\"`, `\\\"elm\\\"`, `\\\"erlang\\\"`, `\\\"f#\\\"`, `\\\"flow\\\"`, `\\\"fortran\\\"`, `\\\"gherkin\\\"`, `\\\"glsl\\\"`, `\\\"go\\\"`, `\\\"graphql\\\"`, `\\\"groovy\\\"`, `\\\"haskell\\\"`, `\\\"hcl\\\"`, `\\\"html\\\"`, `\\\"idris\\\"`, `\\\"java\\\"`, `\\\"javascript\\\"`, `\\\"json\\\"`, `\\\"julia\\\"`, `\\\"kotlin\\\"`, `\\\"latex\\\"`, `\\\"less\\\"`, `\\\"lisp\\\"`, `\\\"livescript\\\"`, `\\\"llvm ir\\\"`, `\\\"lua\\\"`, `\\\"makefile\\\"`, `\\\"markdown\\\"`, `\\\"markup\\\"`, `\\\"matlab\\\"`, `\\\"mathematica\\\"`, `\\\"mermaid\\\"`, `\\\"nix\\\"`, `\\\"notion formula\\\"`, `\\\"objective-c\\\"`, `\\\"ocaml\\\"`, `\\\"pascal\\\"`, `\\\"perl\\\"`, `\\\"php\\\"`, `\\\"plain text\\\"`, `\\\"powershell\\\"`, `\\\"prolog\\\"`, `\\\"protobuf\\\"`, `\\\"purescript\\\"`, `\\\"python\\\"`, `\\\"r\\\"`, `\\\"racket\\\"`, `\\\"reason\\\"`, `\\\"ruby\\\"`, `\\\"rust\\\"`, `\\\"sass\\\"`, `\\\"scala\\\"`, `\\\"scheme\\\"`, `\\\"scss\\\"`, `\\\"shell\\\"`, `\\\"smalltalk\\\"`, `\\\"solidity\\\"`, `\\\"sql\\\"`, `\\\"swift\\\"`, `\\\"toml\\\"`, `\\\"typescript\\\"`, `\\\"vb.net\\\"`, `\\\"verilog\\\"`, `\\\"vhdl\\\"`, `\\\"visual basic\\\"`, `\\\"webassembly\\\"`, `\\\"xml\\\"`, `\\\"yaml\\\"`, `\\\"java/c/c++/c#\\\"`, or `\\\"notionscript\\\"`, instead was `\\\"csharp\\\"`.\",\"request_id\":\"0b1287e6-a78d-4be6-9a33-698d84df3f39\"}     at NotionPageCreator.handle (/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/src/nodes/notion/NotionPageCreator.ts:136:25)     at processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: route-to-direct-save in 962.67ms","workflow_name":"Document to Notion Router","workflow_path":"document-to-notion","request_id":"0af92f17-6a1b-44a8-8d0c-8842eb0fb338"}
+{"level":"error","app":"nanoservice-http","env":"local","message":"Workflow notion-direct-save failed with status 500","stack":"Error: Workflow notion-direct-save failed with status 500     at WorkflowCaller.handle (/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/src/nodes/notion/WorkflowCaller.ts:68:23)     at processTicksAndRejections (node:internal/process/task_queues:105:5)"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: POST","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 5 steps (Parent)","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: parse-category [{\"inputs\":{\"content\":\"${ctx.request.body.content}\",\"category\":\"${ctx.request.body.category}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: parse-category in 0.33ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: generate-title [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: generate-title in 0.40ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: convert-markdown [{\"inputs\":{\"content\":\"${ctx.vars.cleanedContent}\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: convert-markdown in 0.37ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: create-notion-page [{\"inputs\":{\"database\":\"${ctx.request.body.database}\",\"title\":\"${ctx.vars.title}\",\"category\":\"${ctx.vars.category}\",\"contentBlocks\":\"js/ctx.vars.notionBlocks\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 6.28ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 220.69MB, min: 220.49MB, max: 220.89MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 8.07ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"869b58f1-8ff3-4fd6-9914-d4b21ed8294e"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Version: 1.0.0, Method: GET","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Starting runner for 1 steps (Parent)","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: mcp-endpoint [{\"inputs\":{\"debug_mode\":true,\"discover_nodes\":false,\"discover_workflows\":true,\"workflows_directory\":\"/Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows\",\"excluded_workflows\":[\"auto-mcp-server\",\"chatgpt-interface\",\"chatgpt-ui\",\"mcp-client\",\"list_available_tools\",\"empty\",\"email-signature-generator\",\"chain-tools\",\"feedback\"],\"excluded_nodes\":[\"mcp-server\",\"error\",\"mapper\",\"openai\"],\"tools\":[]}}]","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+MCP Request: tools {
+  method: 'GET',
+  body: {},
+  params: { workflow: 'auto-mcp-server', mcp_operation: 'tools' }
+}
+[MCP] Starting tool discovery...
+Found 25 potential workflow files in /Users/wellingtonprado/Projects/Deskree/nano-notion-feeder/workflows/json
+Added workflow as tool: analytics-dashboard (HTTP method: POST)
+Skipping excluded workflow: auto-mcp-server.json
+Added workflow as tool: calendly-stats (HTTP method: POST)
+Added workflow as tool: countries-py (HTTP method: GET)
+Added workflow as tool: countries-vs-facts (HTTP method: GET)
+Added workflow as tool: countries (HTTP method: GET)
+Added workflow as tool: dashboard-gen (HTTP method: GET)
+Added workflow as tool: db-manager (HTTP method: GET)
+Added workflow as tool: discord-oauth (HTTP method: GET)
+Added workflow as tool: document-to-notion (HTTP method: POST)
+Skipping excluded workflow: empty.json
+Skipping excluded workflow: feedback.json
+Added workflow as tool: films (HTTP method: GET)
+Added workflow as tool: image-capture (HTTP method: GET)
+Added workflow as tool: jira-stats (HTTP method: POST)
+Added workflow as tool: launches-by-year (HTTP method: GET)
+Added workflow as tool: mongodb (HTTP method: GET)
+Added workflow as tool: notion-direct-save (HTTP method: POST)
+Added workflow as tool: notion-interactive-save (HTTP method: POST)
+Added workflow as tool: rentals-pdf (HTTP method: GET)
+Added workflow as tool: twitter-stats (HTTP method: POST)
+Added workflow as tool: vanta-stats (HTTP method: POST)
+Added workflow as tool: weather (HTTP method: GET)
+Added workflow as tool: workflow-docs (HTTP method: GET)
+Added workflow as tool: youtube-stats (HTTP method: POST)
+[MCP] Found 22 tools from all sources
+[MCP] - Workflow discovery is enabled
+[MCP] - Node tools have priority over workflow tools
+[MCP] Replaced existing weather tool with enhanced version
+[MCP] Skipping list_available_tools tool (in excluded_workflows list)
+[MCP] Total tools available: 22
+[MCP] - analytics-dashboard: Fetches analytics metrics from multiple platforms and sends them to Looker Studio dashboard
+[MCP] - calendly-stats: Fetches meeting statistics from Calendly
+[MCP] - countries-py: Workflow description
+[MCP] - countries-vs-facts: Workflow description
+[MCP] - countries: Workflow description
+[MCP] - dashboard-gen: This workflow generates multiple dashboard charts based using a postgreSQL database and AI prompts.
+[MCP] - db-manager: This workflow is used to query a database using an AI Prompt UI
+[MCP] - discord-oauth: Handles Discord OAuth flow for authentication and bot installation
+[MCP] - document-to-notion: Main router workflow that analyzes documents and routes to appropriate Notion save workflow
+[MCP] - films: This workflow returns a list of films from Postgres
+[MCP] - image-capture: This workflow captures an image and searches for it in a database.
+[MCP] - jira-stats: Fetches statistics from Jira including tasks and bugs
+[MCP] - launches-by-year: Get launches by year
+[MCP] - mongodb: Provides a RESTful API to interact dynamically with MongoDB collections.
+[MCP] - notion-direct-save: Directly saves documents to Notion when category is already provided
+[MCP] - notion-interactive-save: Saves documents to Notion with interactive category selection via MCP
+[MCP] - rentals-pdf: Generate a PDF from a rental database
+[MCP] - twitter-stats: Fetches statistics from X (Twitter) for a given account
+[MCP] - vanta-stats: Fetches security status and vulnerability information from Vanta
+[MCP] - weather: Get current weather information for any city or location worldwide. Use this tool whenever a user asks about weather, temperature, conditions, humidity, or wind for a specific location. The tool returns real-time data from Open-Meteo API.
+[MCP] - workflow-docs: This workflow generates documentation for a given workflow in HTML format.
+[MCP] - youtube-stats: Fetches statistics from YouTube for a specific channel
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: mcp-endpoint in 4.19ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 220.84MB, min: 220.66MB, max: 221.02MB","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 8.20ms","workflow_name":"Auto-generated MCP Server","workflow_path":"auto-mcp-server","request_id":"9614417d-3862-402e-8f19-a9fb2319a85b"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: create-notion-page in 1081.80ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Running node: format-response [{\"inputs\":{\"pageId\":\"${ctx.response.data.id}\",\"pageUrl\":\"${ctx.response.data.url}\",\"title\":\"${ctx.vars.title}\",\"category\":\"${ctx.vars.category}\",\"success\":true,\"error\":\"\"}}]","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Executed node: format-response in 0.44ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Memory average: 220.74MB, min: 220.23MB, max: 221.24MB","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
+{"level":"info","app":"nanoservice-http","env":"local","message":"Completed in 1087.14ms","workflow_name":"Notion Direct Save","workflow_path":"notion-direct-save","request_id":"5b187fca-74ed-4a19-ba35-e34abc56fb16"}
