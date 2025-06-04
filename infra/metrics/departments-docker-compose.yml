@@ -1,0 +1,40 @@
+services:
+  departments-postgres:
+    image: postgres:15
+    container_name: departments-postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: departments_user
+      POSTGRES_PASSWORD: departments_pass
+      POSTGRES_DB: company_analytics
+    ports:
+      - 5433:5432  # Different port to avoid conflicts with existing postgres
+    volumes:
+      - ./departments-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./departments-data.sql:/docker-entrypoint-initdb.d/02-data.sql
+      - departments_data:/var/lib/postgresql/data
+    networks:
+      - shared-network
+      
+  departments-adminer:
+    image: adminer
+    container_name: departments-adminer
+    restart: always
+    ports:
+      - 8081:8080  # Different port to avoid conflicts
+    networks:
+      - shared-network
+    depends_on:
+      - departments-postgres
+
+volumes:
+  departments_data:
+
+networks:
+  shared-network:
+    external: true
+
+# To run this specific setup:
+# docker network create shared-network (if not exists)
+# docker-compose -f departments-docker-compose.yml up -d 

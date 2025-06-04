@@ -1,25 +1,25 @@
-import StatsAggregator from "./StatsAggregator";
-import LookerStudioOutput from "./LookerStudioOutput";
-import TwitterStatsFetcher from "./TwitterStatsFetcher";
-import DiscordStatsFetcher from "./DiscordStatsFetcher";
-import CalendlyStatsFetcher from "./CalendlyStatsFetcher";
-import VantaStatusFetcher from "./VantaStatusFetcher";
-import JiraStatsFetcher from "./JiraStatsFetcher";
-import YouTubeStatsFetcher from "./YouTubeStatsFetcher";
 import DiscordOAuthUI from "./ui";
-import DiscordOAuthManager from "./DiscordOAuthManager";
+import DevRelAnalyticsProcessor from "./DevRelAnalyticsProcessor";
+import SalesAnalyticsProcessor from "./SalesAnalyticsProcessor";
+import CompanyAnalyticsProcessor from "./CompanyAnalyticsProcessor";
+import EventsAnalyticsProcessor from "./EventsAnalyticsProcessor";
+import HRAnalyticsProcessor from "./HRAnalyticsProcessor";
+import FinanceAnalyticsProcessor from "./FinanceAnalyticsProcessor";
+import ComplianceAnalyticsProcessor from "./ComplianceAnalyticsProcessor";
+import DirectAnalyticsProcessor from "./DirectAnalyticsProcessor";
+import ClaudeAnalyticsInterface from "./ClaudeAnalyticsInterface";
 
 const AnalyticsNodes = {
-  "stats-aggregator": new StatsAggregator(),
-  "looker-studio-output": new LookerStudioOutput(),
-  "twitter-stats-fetcher": new TwitterStatsFetcher(),
-  "discord-stats-fetcher": new DiscordStatsFetcher(),
-  "calendly-stats-fetcher": new CalendlyStatsFetcher(),
-  "vanta-status-fetcher": new VantaStatusFetcher(),
-  "jira-stats-fetcher": new JiraStatsFetcher(),
-  "youtube-stats-fetcher": new YouTubeStatsFetcher(),
   "discord-oauth-ui": new DiscordOAuthUI(),
-  "discord-oauth-manager": new DiscordOAuthManager(),
+  "devrel-analytics-processor": new DevRelAnalyticsProcessor(),
+  "sales-analytics-processor": new SalesAnalyticsProcessor(),
+  "company-analytics-processor": new CompanyAnalyticsProcessor(),
+  "events-analytics-processor": new EventsAnalyticsProcessor(),
+  "hr-analytics-processor": new HRAnalyticsProcessor(),
+  "finance-analytics-processor": new FinanceAnalyticsProcessor(),
+  "compliance-analytics-processor": new ComplianceAnalyticsProcessor(),
+  "direct-analytics-processor": new DirectAnalyticsProcessor(),
+  "claude-analytics-interface": new ClaudeAnalyticsInterface(),
 };
 
 export default AnalyticsNodes; 

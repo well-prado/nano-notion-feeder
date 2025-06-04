@@ -1,0 +1,31 @@
+{
+  "name": "Claude Analytics - Universal Natural Language Interface",
+  "description": "🎯 PRIMARY ANALYTICS ENDPOINT FOR CLAUDE MCP: This is the main entry point for all analytics requests. Claude can ask questions in natural language about any department's performance, trends, or metrics. The system intelligently converts natural language queries to SQL and returns structured data with insights. Supports all 7 departments: DevRel, Sales, Events, HR, Finance, Compliance, and Company-wide analytics. Examples: 'Show me DevRel social media growth', 'What are our sales trends?', 'How is HR hiring performing?', 'Compare finance metrics across quarters'.",
+  "version": "1.0.0",
+  "trigger": {
+    "http": {
+      "method": "POST",
+      "path": "/",
+      "accept": "application/json"
+    }
+  },
+  "steps": [
+    {
+      "name": "claude-processor",
+      "node": "claude-analytics-interface",
+      "type": "module"
+    }
+  ],
+  "nodes": {
+    "claude-processor": {
+      "inputs": {
+        "query": "${ctx.request.body.query}",
+        "action": "js/ctx.request.body.action",
+        "department": "js/ctx.request.body.department",
+        "timeframe": "${ctx.request.body.timeframe || 'last 90 days'}",
+        "format": "${ctx.request.body.format || 'summary'}",
+        "limit": "js/ctx.request.body.limit || 100"
+      }
+    }
+  }
+} 

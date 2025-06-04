@@ -1,9 +1,9 @@
 import ApiCall from "@nanoservice-ts/api-call";
 import IfElse from "@nanoservice-ts/if-else";
 import type { NodeBase } from "@nanoservice-ts/shared";
-import ExampleNodes from "./nodes/examples";
 import AnalyticsNodes from "./nodes/analytics";
 import NotionNodes from "./nodes/notion";
+import ExampleNodes from "./nodes/examples";
 
 const nodes: {
 	[key: string]: NodeBase;
